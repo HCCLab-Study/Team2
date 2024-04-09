@@ -1,8 +1,11 @@
-import { tags, members } from './_data/mock';
+import { tags } from './_data/mock';
 import Member from './_components/Member';
 import Tag from './_components/Tag';
+import useFetchData from '../../hooks/useFetchData';
 
 export default function MembersPage() {
+	const member = useFetchData('/members');
+
 	return (
 		<main>
 			<div className="flex flex-col w-screen items-center bg-backgroundGrey p-20">
@@ -18,7 +21,7 @@ export default function MembersPage() {
 					})}
 				</div>
 				<div className="flex flex-wrap justify-center px-20 ">
-					{members.map((member, index) => {
+					{member.map((member, index) => {
 						return Member({ member, index });
 					})}
 				</div>
